@@ -1,8 +1,7 @@
 node {
    def mvnHome
    stage('code checkout') { 
-       git credentialsId: 'GitHub-ID', url: 'https://github.com/digitalorg/maven_apps'
-       
+       git credentialsId: 'GitHub-ID', url: 'https://github.com/digitalorg/sonar-maven'       
    }
    stage('build') {
        withMaven(jdk: 'java-8', maven: 'Maven') {
