@@ -15,6 +15,11 @@ node {
       }
       
    }
+   stage('sonarqube analysis') {
+       withMaven(jdk: 'java-8', maven: 'Maven') {
+           sh 'mvn sonar:sonar -Dsonar.projectKey=sonar-maven -Dsonar.organization=digitalorg -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=cd3439ae3a30b5f20a1fe97b7a8af35d587fbe16'
+      }
+   }  
    stage('package') {
        withMaven(jdk: 'java-8', maven: 'Maven') {
            sh 'mvn package'
