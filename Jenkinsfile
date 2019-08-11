@@ -16,11 +16,11 @@ node {
       
    }
    stage('sonarqube analysis') {
-      withSonarQubeEnv(credentialsId: 'sonarqube-id') 
+      withSonarQubeEnv(credentialsId: 'sonarqube-id'){ 
        withMaven(jdk: 'java-8', maven: 'Maven') {
            sh 'mvn sonar:sonar'
       }
-      
+     } 
    }  
    stage('package') {
        withMaven(jdk: 'java-8', maven: 'Maven') {
